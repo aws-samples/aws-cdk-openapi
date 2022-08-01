@@ -1,11 +1,19 @@
-## My Project
+## Deploy and manage OpenAPI (Swagger) RESTful APIs with the AWS Cloud Development Kit (AWS CDK)
 
-TODO: Fill this README out!
+The code is this repository accompanies the blog post *Deploy and manage OpenAPI (Swagger) RESTful APIs with the AWS Cloud Development Kit (AWS CDK)* located [here](https://aws.amazon.com).  This code demonstrates how to:
 
-Be sure to:
+- Deploy a RESTful API stage to [Amazon API Gateway](https://aws.amazon.com/api-gateway/) from an OpenAPI specification.
+- Build and deploy an [AWS Lambda function](https://aws.amazon.com/lambda/) which contains the API functionality.
+- Auto-generate API documentation and publish this to an [Amazon S3-hosted](https://aws.amazon.com/s3/) website served by the [Amazon CloudFront](https://aws.amazon.com/cloudfront/) content delivery network(CDN) service. This provides technical and non-technical stakeholders with versioned, current, and accessible API documentation.
+- Auto-generate client libraries for invoking the API and deploy these to [AWS CodeArtifact](https://aws.amazon.com/codeartifact/) which is a fully-managed artifact repository service. This enables API client development teams that seek to integrate with different versions of the API in different environments.
 
-* Change the title in this README
-* Edit your repository description on GitHub
+## Architecture
+
+![alt text](Figure-1-arch.png "Architecture")
+
+## Instructions
+
+Please refer to the [blog post](https://aws.amazon.com) for instructions on how to run this project.
 
 ## Security
 
