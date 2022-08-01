@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 @QuarkusTest
 public class WidgetTest {
-	
+
     @Test
     public void testJaxrs() {
         RestAssured.when().get("/ping").then()

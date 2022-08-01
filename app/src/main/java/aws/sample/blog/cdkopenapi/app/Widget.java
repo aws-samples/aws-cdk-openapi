@@ -4,16 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Widget {
-	
 
 	private Integer id;
 	private String name;
 	private String description;
-	
+
 	public Widget() {
-		
+
 	}
-	
+
 	public Widget(Integer id, String name, String description) {
 		this.id = id;
 		this.name = name;
@@ -27,7 +26,6 @@ public class Widget {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 
 	public String getName() {
 		return name;
