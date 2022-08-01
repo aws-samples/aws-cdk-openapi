@@ -1,0 +1,149 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "1.0.0"
+  title: Widgets API
+  description: >-
+    This is the Widgets API where you can create, find, and update Widgets.
+externalDocs:
+  description: Widgets API Git repository
+  url: https://gitlab.aws/lppopple/blog/cdk-openapi/widgets-api
+tags:
+  - name: widget
+    description: Everything about Widgets
+    externalDocs:
+      description: Amazon Web Services
+      url: 'http://aws.amazon.com'
+paths:
+  /widgets:
+    get: 
+      tags:
+        - widget
+      summary: Widget List.
+      description: Get list of Widgets.
+      operationId: getWidgets
+      responses:
+        '200':
+          $ref: '#/components/responses/Widgets'
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APILambda.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    post:
+      tags:
+        - widget
+      summary: Create Widget.
+      description: Create a Widget.
+      operationId: createWidget
+      requestBody:
+        $ref: '#/components/requestBodies/Widget'
+      responses:
+        '201':
+          description: Created
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APILambda.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+  /widgets/{widgetID}:
+    get:
+      tags:
+        - widget
+      summary: Get Widget.
+      description: Get a Widget.
+      operationId: getWidget
+      parameters:
+        - $ref: '#/components/parameters/WidgetID'
+      responses:
+        '200':
+          $ref: '#/components/responses/Widget'
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APILambda.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    put:
+      tags:
+        - widget
+      summary: Update Widget.
+      description: Update a Widget.
+      operationId: updateWidget
+      parameters:
+        - $ref: '#/components/parameters/WidgetID'
+      requestBody:
+        $ref: '#/components/requestBodies/Widget'
+      responses:
+        '204':
+          description: Updated
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APILambda.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+  /ping:
+    get:
+      summary: Server heartbeat operation
+      description: >-
+        Ping the service.
+      operationId: getPing
+      responses:
+        '200':
+          description: OK
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${APILambda.Arn}/invocations"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+
+components:
+  parameters:
+    WidgetID:
+      in: path
+      name: widgetID
+      required: true
+      schema:
+        type: number
+  requestBodies:
+    Widget:
+      description: Represents a Widget creation.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Widget'
+  responses:
+    Widgets:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Widget'
+    Widget:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Widget'
+  schemas:
+    Widget:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - id
+        - name
+        - description
+          
