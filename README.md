@@ -13,7 +13,7 @@ The code in this repository accompanies the blog post *Deploy and manage OpenAPI
 
 ## Instructions
 
-Please refer to the [blog post](https://aws.amazon.com) for instructions on how to run this project.
+Please refer to the [blog post](https://aws.amazon.com/blogs/devops/deploy-and-manage-openapi-swagger-restful-apis-with-the-aws-cloud-development-kit/) for instructions on how to run this project.
 
 ## Security
 
